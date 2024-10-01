@@ -13,5 +13,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
+EXPOSE 80
+RUN npm run build
+FROM node:20-alpine AS production
+COPY --from=base /usr/src/app /usr/src/app
+CMD ["npm", "run", "preview"]
