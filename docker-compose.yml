@@ -8,3 +8,5 @@ services:
     ports:
       # TODO
         - "80:3000"
+    environment:
+        NODE_ENV: development
