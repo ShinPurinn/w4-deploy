@@ -1,4 +1,4 @@
-FROM node:20 as base
+FROM node:20-alpine AS base
 
 ### <JANGAN DIGANTI>
 ARG STUDENT_NAME
@@ -9,7 +9,7 @@ ENV NUXT_STUDENT_NIM ${STUDENT_NIM}
 ### </JANGAN DIGANTI>
 
 # TODO: code disini
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
