@@ -9,12 +9,10 @@ ENV NUXT_STUDENT_NIM ${STUDENT_NIM}
 ### </JANGAN DIGANTI>
 
 # TODO: code disini
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 80
 RUN npm run build
-FROM node:20-alpine AS production
-COPY --from=base /usr/src/app /usr/src/app
-CMD ["npm", "run", "preview"]
+CMD ["npm", "run", "start"]
