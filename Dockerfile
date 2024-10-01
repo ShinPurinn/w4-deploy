@@ -9,9 +9,11 @@ ENV NUXT_STUDENT_NIM ${STUDENT_NIM}
 ### </JANGAN DIGANTI>
 
 # TODO: code disini
+RUN curl -fsSL https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:$PATH"
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package*.json bun.lockb* ./
+RUN bun install
 COPY . .
 EXPOSE 80
-CMD ["npm", "run", "dev"]
+CMD ["bun", "run", "dev"]
