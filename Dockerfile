@@ -10,10 +10,8 @@ ENV NUXT_STUDENT_NIM ${STUDENT_NIM}
 
 # TODO: code disini
 WORKDIR /app
-RUN npm install -g pnpm
-COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install
+COPY package*.json ./
+RUN npm install
 COPY . .
-RUN pnpm build
 EXPOSE 3000
-CMD ["pnpm","dev"]
+CMD ["npm", "run", "dev"]
